@@ -25,12 +25,12 @@ var g = ga(512, 512, setup, ["images/marbles.png"]); // this is the spritesheet!
 g.start();
 
 //Declare global sprites, objects, and variables here:
-var sling, marbles, capturedMarble, wall, tile, rowHeight, wallHeight, collisions;
+var sling, marbles, capturedMarble, wall, tile, tileSize, collisions;
 
 // Setup function for initialization tasks
 function setup() {
   collisions = [];
-  wallHeight = 10;
+  tileSize = 16;
   g.backgroundColor = "#000"; // black background
   g.canvas.style.border = "1px black dashed";
   for (let i = 0; i < sampleLevel.length; i++) {
@@ -38,9 +38,9 @@ function setup() {
     for (let j = 0; j < row.length; j++) {
       tile = row[j];
       if (tile === '0' || tile === 'W') {
-        wall = g.rectangle(wallHeight, wallHeight * 2, "red");
+        wall = g.rectangle(tileSize, tileSize * 2, "red");
         // row height in pixels
-        wall.setPosition(j * wallHeight, i * (wallHeight * 2));
+        wall.setPosition(j * tileSize, i * (tileSize * 2));
         collisions.push(wall);
       }
     }
